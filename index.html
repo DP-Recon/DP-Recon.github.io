@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Decompositional Neural Scene Reconstruction with Generative Diffusion Prior">
+  <meta name="keywords" content="DP-Recon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DP-Recon</title>
+  <link rel="icon" href="images/physics.svg" type="image/svg+xml">
+
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="./static/js/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  gap: 10px;
+  padding: 0;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 0;
+  font-size: 30px;
+}
+
+.obj1 {
+  grid-column: 1 / 3;
+}
+.obj2 {
+  grid-column: 3 / 5;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+.obj3 {
+  grid-column: 5 / 7;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.content h4 {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  background-color: lightgray;
+}
+
+</style>
+
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Decompositional Neural Scene Reconstruction <br> with Generative Diffusion Prior</h1>
+          <div class="is-size-4"><b>CVPR 2025</b></div>
+          <!-- <br> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+                <a href="https://dali-jack.github.io/Junfeng-Ni/" style="color:#000000;font-weight:normal;">Junfeng Ni</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+                <a href="https://yuliu-ly.github.io/" style="color:#000000;font-weight:normal;">Yu Liu</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+                <a href="https://jason-aplp.github.io/Ruijie-Lu/" style="color:#000000;font-weight:normal;">Ruijie Lu</a><sup>2,3</sup>,</span>
+            <span class="author-block">
+                  <a href="https://github.com/zr-zhou0o0" style="color:#000000;font-weight:normal;">Zirui Zhou</a><sup>1</sup>,</span>
+            <br>
+            <span class="author-block">
+                  <a href="https://zhusongchun.net/" style="color:#000000;font-weight:normal;">Song-Chun Zhu</a><sup>1,2,3</sup>,</span>
+            <span class="author-block">
+                  <a href="https://yixchen.github.io/" style="color:#000000;font-weight:normal;">Yixin Chen<sup>✉</sup></a><sup>2</sup>,</span>
+	          <span class="author-block">
+                <a href="https://siyuanhuang.com/" style="color:#000000;font-weight:normal;">Siyuan Huang<sup>✉</sup></a><sup>2</sup></span>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block" style="color:#808080;font-weight:normal;">
+              <sup>✉</sup> indicates corresponding author  &nbsp&nbsp
+              <sup>1</sup>Tsinghua University
+            </span>
+            <br>
+            <span class="author-block" style="color:#808080;font-weight:normal;">
+              <sup>2</sup>National Key Laboratory of General Artificial Intelligence, BIGAI  &nbsp&nbsp
+              <sup>3</sup>Peking University
+            </span>
+            <br>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+               <span class="link-block">
+                <a href="" target="_blank"
+		                class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span >Code</span>
+                  </a>
+              </span> 
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Demo Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/YR3OiZuL-Lg"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Demo Video</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <h2 class="subtitle has-text-centered">
+      TL;DR: <strong>DP-Recon</strong> incorporates <strong>diffusion priors for decompositional neural scene reconstruction</strong> to enhance reconstruction quality in sparsely captured and heavily occluded regions.
+    </h2>
+    <!-- <br> -->
+    <p>DP-Recon reconstructs a high-quality interactive world from just 10 input views. 
+      Users can navigate, drag objects, edit geometry and texture via text, and apply photorealistic VFX. 
+      For the <strong>original, higher-quality video</strong>, please visit <a href="https://youtu.be/YR3OiZuL-Lg">here</a>.
+    </p>
+    <br>
+      <div class="columns is-centered">
+        <video id="teaser" autoplay muted loop height="100%" controls>
+          <source src="./images/VFX-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <br>
+      <img src="./images/teaser.png" alt="">
+      <br><br>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Abstract</h2>
+        </div>
+        </div>
+        <br>
+        <div class="content has-text-justified">
+          <p>
+            Decompositional reconstruction of 3D scenes, with complete shapes and detailed texture of all objects within, is intriguing for downstream applications but remains challenging, particularly with sparse views as input. 
+            Recent approaches incorporate semantic or geometric regularization to address this issue, but they suffer significant degradation in underconstrained areas and fail to recover occluded regions. 
+            We argue that the key to solving this problem lies in supplementing missing information for these areas. 
+            To this end, we propose DP-Recon, which employs diffusion priors in the form of Score Distillation Sampling (SDS) to optimize the neural representation of each individual object under novel views. 
+            This provides additional information for the underconstrained areas, but directly incorporating diffusion prior raises potential conflicts between the reconstruction and generative guidance. 
+            Therefore, we further introduce a visibility-guided approach to dynamically adjust the per-pixel SDS loss weights. 
+            Together these components enhance both geometry and appearance recovery while remaining faithful to input images.  
+            Extensive experiments across Replica and ScanNet++ demonstrate that our method significantly outperforms SOTA methods. 
+            Notably, it achieves better object reconstruction under 10 views than the baselines under 100 views. 
+            Our method enables seamless text-based editing for geometry and appearance through SDS optimization and produces decomposed object meshes with detailed UV maps that support photorealistic Visual effects (VFX) editing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Method</h2>
+        </div>
+        </div>
+        <br>
+        <div class="content has-text-justified">
+          <p>
+            Our novel method facilitates the decompositional neural reconstruction with generative diffusion prior.
+            By leveraging the generative prior, we optimize both the geometry and appearance of each object alongside the reconstruction loss, effectively filling in missing information in unobserved and occluded regions.
+            Furthermore, we propose a visibility-guided approach to dynamically adjust the SDS loss, alleviating the conflict between the reconstruction objective and generative prior guidance.
+          </p>
+          <img src="./images/method.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="Result">
+  <div class="container is-max-desktop">
+    <div  class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+    <h2 class="title is-3">Results</h2>
+    </div>
+    </div>
+    <br>
+
+    <h3 class="title is-4">Decompositional Scene Reconstruction</h3>
+        <div class="content has-text-justified">
+            <img src="./images/results.png" alt="">
+            <p>
+               Examples from Replica and ScanNet++ demonstrate our model produces higher quality reconstructions compared with the baselines. 
+               Our results achieve more accurate reconstruction in less captured areas, more precise object structures, smoother background reconstruction, and fewer floating artifacts.
+            </p>
+        </div>
+
+      <h3 class="title is-4">Novel View Synthesis</h3>
+        <div class="content has-text-justified">
+          <img src="./images/color_results.png" alt="">
+            <p>
+              Our appearance prior also provides reasonable additional information in sparsely captured regions,
+              leading to higher-quality rendering in these areas compared to the artifacts observed in the baseline results.
+            </p>
+        </div>
+
+        <h3 class="title is-4">Scene Editing</h3>
+        <div class="content has-text-justified">
+          <img src="./images/scene_edit-web.png" alt="">
+            <p>
+               Our method enables seamless text-based editing for geometry and appearance through SDS optimization and produces decomposed object meshes with detailed UV maps that support photorealistic VFX editing.
+            </p>
+        </div>
+
+        <h3 class="title is-4">Generalizability on YouTube Videos</h3>
+        <div class="content has-text-justified">
+          <img src="./images/YouTube-demo.png" alt="">
+            <p>
+              Our model demonstrates strong generalization to in-the-wild scenes, such as YouTube videos, producing high-quality reconstructions with detailed geometry and appearance.
+            </p>
+        </div>
+<!-- <br> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Related Work</h2>
+      <a href="https://arxiv.org/abs/2206.00665">MonoSDF: Exploring Monocular Geometric Cues for Neural Implicit Surface Reconstruction</a>
+      <br>
+      <a href="https://arxiv.org/abs/2303.08605">RICO: Regularizing the Unobservable for Indoor Compositional Reconstruction</a>
+      <br>
+      <a href="https://arxiv.org/abs/2308.07868">ObjectSDF++: Improved Object-Compositional Neural Implicit Surfaces</a>
+      <br>
+      <a href="https://arxiv.org/abs/2404.16666">PhyRecon: Physically Plausible Neural Scene Reconstruction</a>
+      <br>
+      <a href="https://arxiv.org/abs/2303.13873">Fantasia3D: Disentangling Geometry and Appearance for High-quality Text-to-3D Content Creation</a>
+      <br>
+      <a href="https://arxiv.org/abs/2311.16918">RichDreamer: A Generalizable Normal-Depth Diffusion Model for Detail Richness in Text-to-3D</a>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{ni2025dprecon,
+  title={Decompositional Neural Scene Reconstruction with Generative Diffusion Prior},
+  author={Ni, Junfeng and Liu, Yu and Lu, Ruijie and Zhou, Zirui and Zhu, Song-Chun and Chen, Yixin and Huang, Siyuan},
+  booktitle=CVPR,
+  year={2025}
+}</code></pre>
+    </div>
+  </section>
+
+
+<footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This webpage originated from <a href="https://nerfies.github.io/">Nerfies</a>.
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+</footer>
+
+</body>
+</html>
