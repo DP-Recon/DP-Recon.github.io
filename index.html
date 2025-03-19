@@ -232,7 +232,10 @@ hr {
             By leveraging the generative prior, we optimize both the geometry and appearance of each object alongside the reconstruction loss, effectively filling in missing information in unobserved and occluded regions.
             Furthermore, we propose a visibility-guided approach to dynamically adjust the SDS loss, alleviating the conflict between the reconstruction objective and generative prior guidance.
           </p>
-          <img src="./images/method.png" alt="">
+          <!-- <img src="./images/method.png" alt=""> -->
+          <video id="method" autoplay muted loop height="100%" controls>
+            <source src="./images/method.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
@@ -250,36 +253,49 @@ hr {
 
     <h3 class="title is-4">Decompositional Scene Reconstruction</h3>
         <div class="content has-text-justified">
-            <img src="./images/results.png" alt="">
-            <p>
-               Examples from Replica and ScanNet++ demonstrate our model produces higher quality reconstructions compared with the baselines. 
-               Our results achieve more accurate reconstruction in less captured areas, more precise object structures, smoother background reconstruction, and fewer floating artifacts.
-            </p>
+          <p>
+            Examples from Replica and ScanNet++ demonstrate our model produces higher quality reconstructions compared with the baselines. 
+            Our results achieve more accurate reconstruction in less captured areas, more precise object structures, smoother background reconstruction, and fewer floating artifacts.
+         </p>
+            <!-- <img src="./images/results.png" alt=""> -->
+            <video id="mesh-1" autoplay muted loop height="100%" controls>
+              <source src="./images/mesh_result-1.mp4" type="video/mp4">
+            </video>
+            <video id="mesh-2" autoplay muted loop height="100%" controls>
+              <source src="./images/mesh_result-2.mp4" type="video/mp4">
+            </video>
         </div>
 
       <h3 class="title is-4">Novel View Synthesis</h3>
         <div class="content has-text-justified">
+          <p>
+            Our appearance prior also provides reasonable additional information in sparsely captured regions,
+            leading to higher-quality rendering in these areas compared to the artifacts observed in the baseline results.
+          </p>
           <img src="./images/color_results.png" alt="">
-            <p>
-              Our appearance prior also provides reasonable additional information in sparsely captured regions,
-              leading to higher-quality rendering in these areas compared to the artifacts observed in the baseline results.
-            </p>
+            <video id="color" autoplay muted loop height="100%" controls>
+              <source src="./images/rendering.mp4" type="video/mp4">
+            </video>
         </div>
 
         <h3 class="title is-4">Scene Editing</h3>
         <div class="content has-text-justified">
+          <p>
+            Our method enables seamless text-based editing for geometry and appearance through SDS optimization and produces decomposed object meshes with detailed UV maps that support photorealistic VFX editing.
+         </p>
           <img src="./images/scene_edit-web.png" alt="">
-            <p>
-               Our method enables seamless text-based editing for geometry and appearance through SDS optimization and produces decomposed object meshes with detailed UV maps that support photorealistic VFX editing.
-            </p>
+            <video id="style" autoplay muted loop height="100%" controls>
+              <source src="./images/style-editing.mp4" type="video/mp4">
+            </video>
         </div>
 
         <h3 class="title is-4">Generalizability on YouTube Videos</h3>
         <div class="content has-text-justified">
+          <p>
+            Our model exhibits strong generalization to in-the-wild scenes, such as YouTube videos, achieving high-quality reconstructions with detailed geometry and appearance using only 15 input views. 
+            <a href="https://www.youtube.com/watch?v=UNKC6coX7zg">link to scene1</a>, <a href="https://www.youtube.com/watch?v=7KnC6qGVgng">link to scene2</a> and <a href="https://www.youtube.com/watch?v=FuUdxiUIT1c">link to scene3</a>.
+          </p>
           <img src="./images/YouTube-demo.png" alt="">
-            <p>
-              Our model demonstrates strong generalization to in-the-wild scenes, such as YouTube videos, producing high-quality reconstructions with detailed geometry and appearance.
-            </p>
         </div>
 <!-- <br> -->
 
