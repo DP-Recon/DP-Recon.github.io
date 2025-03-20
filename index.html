@@ -118,7 +118,7 @@ hr {
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="" target="_blank"
+                <a href="https://arxiv.org/abs/2503.14830" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -128,7 +128,7 @@ hr {
               </span>
               <!-- Code Link. -->
                <span class="link-block">
-                <a href="" target="_blank"
+                <a href="https://github.com/DP-Recon/DP-Recon" target="_blank"
 		                class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -257,13 +257,20 @@ hr {
             Examples from Replica and ScanNet++ demonstrate our model produces higher quality reconstructions compared with the baselines. 
             Our results achieve more accurate reconstruction in less captured areas, more precise object structures, smoother background reconstruction, and fewer floating artifacts.
          </p>
-            <!-- <img src="./images/results.png" alt=""> -->
-            <video id="mesh-1" autoplay muted loop height="100%" controls>
-              <source src="./images/mesh_result-1.mp4" type="video/mp4">
-            </video>
-            <video id="mesh-2" autoplay muted loop height="100%" controls>
-              <source src="./images/mesh_result-2.mp4" type="video/mp4">
-            </video>
+          <div class="container">
+              <div id="results-carousel" class="carousel results-carousel">
+                  <div class="item mesh_result-1">
+                    <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+                      <source src="./images/mesh_result-1.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="item mesh_result-2">
+                    <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+                      <source src="./images/mesh_result-1.mp4" type="video/mp4">
+                    </video>
+                  </div>
+              </div>
+          </div>
         </div>
 
       <h3 class="title is-4">Novel View Synthesis</h3>
@@ -284,12 +291,16 @@ hr {
             Our method enables seamless text-based editing for geometry and appearance through SDS optimization and produces decomposed object meshes with detailed UV maps that support photorealistic VFX editing.
          </p>
           <img src="./images/scene_edit-web.png" alt="">
+          <br>
+          <p>
+            By transforming all objects in the scene into a new, unified style, we can easily generate a new scene with the same layout but different appearance, which could be beneficial for the Metaverse.
+          </p>
             <video id="style" autoplay muted loop height="100%" controls>
               <source src="./images/style-editing.mp4" type="video/mp4">
             </video>
         </div>
 
-        <h3 class="title is-4">Generalizability on YouTube Videos</h3>
+        <h3 class="title is-4">Generalization Capability on YouTube Videos</h3>
         <div class="content has-text-justified">
           <p>
             Our model exhibits strong generalization to in-the-wild scenes, such as YouTube videos, achieving high-quality reconstructions with detailed geometry and appearance using only 15 input views. 
